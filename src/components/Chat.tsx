@@ -70,7 +70,7 @@ export const Chat = () => {
             return user.displayName !== value.name ? (
             <div key={value.id} className="message">
                 <div className="avatar" style={{backgroundImage:`url(${value.avatar})`,borderRadius:"25px",marginLeft:"5px"}}/>
-                <div className="text"><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C"} :{}}>{value.name}</div><div className="textmes">{value.text}</div><div className="time">{value.date}</div></div>
+                <div className="text"><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C"} :{}}>{value.name}</div><div className="textmes">{value.text}<div className="time">{value.date}</div></div></div>
                 
             </div>
                 )
