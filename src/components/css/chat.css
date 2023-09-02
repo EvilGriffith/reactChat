@@ -32,6 +32,7 @@
     border: 0;
     margin-left: 10px;
     touch-action: manipulation;
+    font-size: 16px;
 }
 .buttin{
     width:30px;
