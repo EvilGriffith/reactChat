@@ -49,14 +49,14 @@ export const Chat = () => {
             return user.displayName !== value.name ? (
             <div className="message">
                 <div className="avatar" style={{backgroundImage:`url(${value.avatar})`,borderRadius:"25px",marginLeft:"5px"}}/>
-                <div className="text"><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C",marginRight:"auto"} :{marginRight:"auto"}}>{value.name}</div>{value.text}</div>
+                <div className="text"><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C",marginRight:"auto"} :{marginRight:"auto"}}>{value.name}</div><div className="textmes">{value.text}</div></div>
                 
             </div>
                 )
                 :
                 (
             <div className="message" style={{marginLeft:"auto"}}>
-                <div className="text" style={{backgroundColor:"#EFFDDE",marginRight:"5px"}}><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C",marginLeft:"auto"} :{marginLeft:"auto"}}>{value.name}</div>{value.text}</div>
+                <div className="text" style={{backgroundColor:"#EFFDDE",marginRight:"5px"}}><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C",marginLeft:"auto"} :{marginLeft:"auto"}}>{value.name}</div><div className="textmes">{value.text}</div></div>
                 <div className="avatar" style={{backgroundImage:`url(${value.avatar})`,borderRadius:"25px",marginRight:"5px"}}/>
             </div>
                 )
