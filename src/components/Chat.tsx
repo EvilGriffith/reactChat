@@ -22,7 +22,6 @@ export const Chat = () => {
                 messages.push({...doc.data(), id: doc.id })
                 messages.sort((x: any,y: any) => x.createAt.seconds - y.createAt.seconds)
             })
-            console.log(messages)
             setmessages(messages)
         })
         
@@ -39,15 +38,24 @@ export const Chat = () => {
                 name: auth.currentUser?.displayName
              })
              setvalue("")
+             
          }
-        
+         
     }
-
+    const autoscroll:any = () =>{
+        setTimeout(() => {
+            document.querySelector<any>(".chatwindow").scrollTop = 9999
+        }, 500)
+    }
+    setTimeout(() => {
+        document.querySelector<any>(".chatwindow").scrollTop = 9999
+    }, 1000)
     return (
     <div className="chatapp">
-        <div className="chatwindow">{messages.map((value: any) => {
+        <div className="chatwindow" onChange={autoscroll()}>{messages.map((value: any) => {
+         
             return user.displayName !== value.name ? (
-            <div className="message">
+            <div key={value.id} className="message">
                 <div className="avatar" style={{backgroundImage:`url(${value.avatar})`,borderRadius:"25px",marginLeft:"5px"}}/>
                 <div className="text"><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C"} :{}}>{value.name}</div><div className="textmes">{value.text}</div></div>
                 
