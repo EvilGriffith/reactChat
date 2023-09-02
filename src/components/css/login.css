@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+.butt{
+    width: auto;
+    height: 30px;
+    background-color: white;
+    border:2px solid black;
+    border-radius: 25px;
+    transition: 0.3s ease-in;
+}
+.butt:hover{
+    cursor: pointer;
+    color:white;
+    background-color: black;
+}

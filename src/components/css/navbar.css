@@ -1,0 +1,53 @@
+.navbar{
+    background-color: red;
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.items{
+    width: 80%;
+    height: 50%;
+    display: flex;
+}
+.but{
+    background-color: red;
+    width: 70px;
+    height: 35px;
+    border: 2px solid black;
+    color:white;
+    border-radius: 25px;
+    transition: 0.3s ease-in;
+    position: sticky;
+    margin-left: auto;
+    color:white;
+    text-decoration: none;
+}
+.but:hover{
+    background-color: black;
+    cursor:pointer;
+}
+.ava{
+    width: 35px;
+    height: 35px;
+    background-image: url("https://as2.ftcdn.net/v2/jpg/03/59/58/91/1000_F_359589186_JDLl8dIWoBNf1iqEkHxhUeeOulx0wOC5.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: sticky;
+    float:left;
+    border-radius: 50%;
+}
+.nickname{
+    width: auto;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+}
+.link{
+    text-decoration: none;
+    color:white;
+}
