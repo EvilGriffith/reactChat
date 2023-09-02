@@ -29,13 +29,26 @@ export const Chat = () => {
 
     const sendmessage = async() => {
         if(value !== ""){
+            const date = new Date()
+            const hours = date.getHours()
+            const minutes = date.getMinutes()
+            let copyhours = String(hours)
+            let copyminutes = String(minutes)
+            if(copyhours.length == 1){
+                copyhours = "0" + copyhours
+            }
+            if(copyminutes.length == 1){
+                copyminutes = "0" + copyminutes
+            }
+            const createmes = copyhours + ":" + copyminutes
             setcount(count + 1)
              await addDoc(messageref,{
                 id: count,
                 text: value,
                 createAt: serverTimestamp(),
                 avatar: auth.currentUser?.photoURL,
-                name: auth.currentUser?.displayName
+                name: auth.currentUser?.displayName,
+                date: createmes
              })
              setvalue("")
              
@@ -57,14 +70,14 @@ export const Chat = () => {
             return user.displayName !== value.name ? (
             <div key={value.id} className="message">
                 <div className="avatar" style={{backgroundImage:`url(${value.avatar})`,borderRadius:"25px",marginLeft:"5px"}}/>
-                <div className="text"><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C"} :{}}>{value.name}</div><div className="textmes">{value.text}</div></div>
+                <div className="text"><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C"} :{}}>{value.name}</div><div className="textmes">{value.text}</div><div className="time">{value.date}</div></div>
                 
             </div>
                 )
                 :
                 (
             <div className="message" style={{marginLeft:"auto"}}>
-                <div className="text" style={{backgroundColor:"#EFFDDE",marginRight:"5px"}}><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C"} :{}}>{value.name}</div><div className="textmes">{value.text}</div></div>
+                <div className="text" style={{backgroundColor:"#EFFDDE",marginRight:"5px"}}><div className="nick" style={value.name == "CHiKUSHka" ? {color:"#ED726C"} :{}}>{value.name}</div><div className="textmes">{value.text}<div className="time">{value.date}</div></div></div>
                 <div className="avatar" style={{backgroundImage:`url(${value.avatar})`,borderRadius:"25px",marginRight:"5px"}}/>
             </div>
                 )

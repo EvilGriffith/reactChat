@@ -1,11 +1,13 @@
-import {Route,Routes} from "react-router-dom"
+import { Route,Routes} from "react-router-dom"
 import { privateRoutes, publicRoutes } from "../routes"
 import {useAuthState} from "react-firebase-hooks/auth"
 import { auth } from "../main"
 
 
+
 export const AppRoute = () => {
  const [user] = useAuthState(auth)
+ 
  
  return user ?
     (
@@ -13,6 +15,7 @@ export const AppRoute = () => {
             {privateRoutes.map(({path,el}) => 
             <Route key={path} path={path} Component={el}/>
              )}
+             <Route path="*"/>
         </Routes>
     )
     :
@@ -21,6 +24,7 @@ export const AppRoute = () => {
             {publicRoutes.map(({path,el}) => 
             <Route key={path} path={path} Component={el}/>
              )}
+            <Route path="*"/>
         </Routes>
     ) 
 }
