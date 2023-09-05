@@ -96,7 +96,7 @@
     font-size: 9px;
     color:#434343;
 }
-@media  screen and (max-width: 375px) {
+@media  screen and (max-width: 767px) {
     .chatwindow{
         width: 360px;
     }
