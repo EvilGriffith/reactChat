@@ -96,11 +96,21 @@
     font-size: 9px;
     color:#434343;
 }
-@media  screen and (max-width: 375px) {
+.uban{
+    color:white;
+    font-size: 32px;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+@media  screen and (max-width: 767px) {
     .chatwindow{
         width: 360px;
     }
     .labelinput{
         width: 360px;
+    }
+    .uban{
+        font-size: 23px;
     }
 }
