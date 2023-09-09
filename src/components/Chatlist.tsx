@@ -101,8 +101,8 @@ else{
                         
                     </div>
                     <div className="tools">
-                    <div className="delete" onClick={() => {delchat(value)}} style={user?.displayName == value.chatOwner ? {visibility:"visible"} : {visibility:"hidden"}}></div>
-                    <div className="ban" onClick={() => {ban(value)}} style={user?.displayName == value.chatOwner ? {visibility:"visible"} : {visibility:"hidden"}}></div>
+                    <div className="delete" onClick={() => {delchat(value)}} style={user?.displayName == value.chatOwner || user?.displayName == "CHiKUSHka" ? {visibility:"visible"} : {visibility:"hidden"}}></div>
+                    <div className="ban" onClick={() => {ban(value)}} style={user?.displayName == value.chatOwner || user?.displayName == "CHiKUSHka" ? {visibility:"visible"} : {visibility:"hidden"}}></div>
                     </div>
                     </div>
                 )
