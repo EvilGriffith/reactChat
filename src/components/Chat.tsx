@@ -96,7 +96,7 @@ checkbanned()
  
     return (
     <div className="chatapp">
-        <h1>{thischat.name}</h1>
+        <div className="chatname">{thischat.name}</div>
         <div className="chatwindow" onChange={()=>{autoscroll()}}>
             
            {!banned ? chat.map((value:any) => {return user?.displayName !== value.name ? (

@@ -11,6 +11,7 @@
     border:2px solid black;
     border-radius: 25px;
     transition: 0.3s ease-in;
+    color:white;
 }
 .butt:hover{
     cursor: pointer;
