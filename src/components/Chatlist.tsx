@@ -87,14 +87,12 @@ const unbanperson = (el:any) => {
     let banlist = chatforban.banlist
     let newbanlist:any = []
     banlist.filter((name:any) => {if(name !== el) newbanlist.push(name); else if(banlist.length == 1) newbanlist.push()})
-    console.log(newbanlist)
     updateDoc(docRef,{banlist: newbanlist})
     let obj = chatforban
     obj.banlist = newbanlist
     setchatforban(obj)
     setbaninput("")
 }
-console.log(chatforban)
     return (
         <div className="containlist">
             
