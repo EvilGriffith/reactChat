@@ -169,5 +169,12 @@
     .chatlistwindow{
         width: 360px;
     }
-    
+    .baninput{
+        width:100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .banlist{
+        width: 360px;
+    }
 }

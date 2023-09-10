@@ -61,7 +61,7 @@ const delchat:any = async(value:any) => {
 }
 const ban:any = async(value:any) => {
 setchatforban(value)
-setbanpress(true)
+setbanpress(!banpress)
 }
 const banpush = () => {
 if(baninput != ""){
