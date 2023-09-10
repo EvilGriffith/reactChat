@@ -18,7 +18,6 @@ export const Chat = () => {
     const [ref,setref] = useState<any>()
     const [value,setvalue] = useState("")
     const [banlist, setbanlist] = useState<any>()
-    const [typinguser,settypinguser] = useState<string>("")
     let banned = false
     const mesref = collection(db,"allchats")
     useEffect(()=>{
@@ -42,7 +41,7 @@ export const Chat = () => {
     const autoscroll:any = () =>{
         setTimeout(() => {
             document.querySelector<any>(".chatwindow").scrollTop = 9999
-        }, 500)
+        }, 100)
     }
     setTimeout(() => {
         document.querySelector<any>(".chatwindow").scrollTop = 9999
@@ -81,29 +80,26 @@ export const Chat = () => {
     
 
 const checkbanned = () => {
+    console.log(banlist)
     if(banlist){
         for(let i = 0;i < banlist.length;i++){
             if(banlist[i] == user?.displayName){
                 banned = true
             }
             else{
-                banned = false
+                continue
             }
         }
         }
+        
 }
 checkbanned()
     
-const typing = () => {
-    settypinguser(user?.displayName + " Печатает...")
-    setTimeout(()=>{
-        settypinguser("")
-    },5000)
-}
+
  
     return (
     <div className="chatapp">
-        <div className="chatname">{typinguser != "" ? typinguser : thischat.name}</div>
+        <div className="chatname">{thischat.name}</div>
         <div className="chatwindow" onChange={()=>{autoscroll()}}>
             
            {!banned ? chat.map((value:any) => {return user?.displayName !== value.name ? (
@@ -126,7 +122,7 @@ const typing = () => {
             
         </div>   
         <label className="labelinput" style={banned ? {visibility:"hidden"} : {visibility:"visible"}}>
-            <input className="input" placeholder="Сообщение" value={value} onChange={(e) => {setvalue(e.target.value); typing()}} onKeyDown={(e)=> {if(e.key == "Enter") sendMessage()}} />
+            <input className="input" placeholder="Сообщение" value={value} onChange={(e) => {setvalue(e.target.value)}} onKeyDown={(e)=> {if(e.key == "Enter") sendMessage()}} />
             <button className="buttin" onClick={sendMessage}></button>
         </label>
     </div>

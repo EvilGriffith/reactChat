@@ -8,11 +8,11 @@ import { useAuthState } from "react-firebase-hooks/auth"
 
 
 export let thischat:any 
+
 export const Chatlist = () => {
 const [user] = useAuthState(auth)
 const [baninput,setbaninput] = useState<any>("")
 const [chats,setchats] = useState<any>([])
-const [count,setcount] = useState<number>(0)
 const [placeholder,setplaceholder] = useState("Введите имя нового чата")
 const [inpvalue,setinpvalue] = useState("")
 const [banpress,setbanpress] = useState<boolean>(false)
@@ -23,7 +23,6 @@ const [chatforban,setchatforban] = useState<any>()
 const addChat = async() => {
     
     if(inpvalue !== ""){
-    setcount(count + 1)
     await addDoc(docRef,{
         name: inpvalue,
         messages: [],
@@ -60,13 +59,13 @@ const delchat:any = async(value:any) => {
    
     
 }
-const ban:any = (value:any) => {
+const ban:any = async(value:any) => {
 setchatforban(value)
 setbanpress(true)
 }
 const banpush = () => {
-    if(baninput != ""){
-    console.log(chatforban)
+if(baninput != ""){
+
  const chatref = chatforban.id
  const docref = doc(db,"allchats",chatref)
  let newbanlist = Object.assign([])
@@ -75,12 +74,27 @@ const banpush = () => {
  updateDoc(docref,{
     banlist: newbanlist
  })
+ setbaninput("")
  setbanpress(false)
 }
 else{
     setbanpress(false)
 }
 }
+const unbanperson = (el:any) => {
+    const chatref = chatforban.id
+    const docRef = doc(db,"allchats", chatref)
+    let banlist = chatforban.banlist
+    let newbanlist:any = []
+    banlist.filter((name:any) => {if(name !== el) newbanlist.push(name); else if(banlist.length == 1) newbanlist.push()})
+    console.log(newbanlist)
+    updateDoc(docRef,{banlist: newbanlist})
+    let obj = chatforban
+    obj.banlist = newbanlist
+    setchatforban(obj)
+    setbaninput("")
+}
+console.log(chatforban)
     return (
         <div className="containlist">
             
@@ -112,7 +126,11 @@ else{
                         <div className="nonechats">Нету созданных чатов</div>
                         )}
             </div>
-            {banpress ? <input className="baninput" placeholder="Введите никнейм человека которого нужно забанить" autoFocus onKeyDown={(e) => {if(e.key == "Enter"){banpush()}}} onChange={(e) => {setbaninput(e.target.value)}}/> : <></>}
+            {banpress ? <div><div className="banlist">
+                {chatforban.banlist.map((name: any,index:any) => {return( 
+                <div className="banperson" key={index}>{name}<div className="unban" onClick={() => {unbanperson(name)}}></div></div>
+                )})}
+                </div><input className="baninput" placeholder="Введите никнейм человека которого нужно забанить" autoFocus onKeyDown={(e) => {if(e.key == "Enter"){banpush()}}} onChange={(e) => {setbaninput(e.target.value)}}/></div> : <></>}
             
         </div>
     )

@@ -134,11 +134,36 @@
     height: 50px;
 }
 .baninput{
-    width: 60%;
+    width: 600px;
     outline: 0;
     border: 0;
     margin-top: 20px;
     font-size: 16px;
+}
+.banlist{
+    width: 600px;
+    height: 100px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.banperson{
+    margin-top: 5px;
+    display: flex;
+}
+.unban{
+    background-image: url("https://evilgriffith.github.io/images/x.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    margin-top: 5px
+}
+.unban:hover{
+    cursor: pointer;
 }
 @media  screen and (max-width: 767px) {
     .chatlistwindow{
