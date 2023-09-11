@@ -23,7 +23,7 @@
 .inputaddchat{
     outline: 0;
     border:0;
-    width: 85%;
+    width: 70%;
     height: 30px;
     margin-top: 10px;
     margin-left: 10px;
@@ -36,6 +36,7 @@
     height: 30px;
     margin-top: 10px;
     margin-left: 10px;
+    margin-right: 5px;
     background-color: #434343;
     background-image: url("https://evilgriffith.github.io/images/plus.png");
     background-size: 60%;
@@ -165,6 +166,92 @@
 .unban:hover{
     cursor: pointer;
 }
+.passwordname{
+    color: white;
+    font-size: 11px;
+    margin-top: 2px;
+}
+.passwordblock{
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.allitemspass .passinput {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.allitemspass {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+    margin-top: 10px;
+}
+.checkmark{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #343434;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+.allitemspass .passinput:checked ~ .checkmark{
+    background-color: #fff;
+    border: 2px solid #343434;
+}
+.checkmark:after{
+    content: "";
+    position: absolute;
+    display: none;
+    filter: drop-shadow(0 0 10px #888);
+}
+.allitemspass .passinput:checked ~ .checkmark:after{
+    display: block;
+}
+.allitemspass .checkmark:after {
+    left: 0.13em;
+    top: 0.05em;
+    width: 5px;
+    height: 8px;
+    border: solid #343434;
+    border-width: 0 0.2em 0.2em 0;
+    border-radius: 4px;
+    transform: rotate(45deg);
+    animation: bounceFadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+   }
+   .passwordinput{
+        width: 600px;
+        height: 30px;
+        outline: 0;
+        border: 0;
+        margin-top: 10px;
+   }
+.lock{
+    width: 15px;
+    height: 15px;
+    background-image: url("https://evilgriffith.github.io/images/lock.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+   @keyframes bounceFadeIn {
+    from {
+     transform: translate(0, -10px) rotate(45deg);
+     opacity: 0;
+    }
+   
+    to {
+     transform: translate(0, 0) rotate(45deg);
+     opacity: 1;
+    }
+   }
 @media  screen and (max-width: 767px) {
     .chatlistwindow{
         width: 360px;
@@ -175,6 +262,12 @@
         margin-right: auto;
     }
     .banlist{
+        width: 360px;
+    }
+    .passwordname{
+        font-size: 9px;
+    }
+    .passwordinput{
         width: 360px;
     }
 }

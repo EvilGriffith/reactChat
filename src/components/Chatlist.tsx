@@ -18,6 +18,8 @@ const [inpvalue,setinpvalue] = useState("")
 const [banpress,setbanpress] = useState<boolean>(false)
 const docRef: any = collection(db,"allchats")
 const [chatforban,setchatforban] = useState<any>()
+const [passwbutpress,setpasswbutpress] = useState<boolean>(false)
+const [passinput,setpassinput] = useState<any>("")
 
 
 const addChat = async() => {
@@ -29,7 +31,8 @@ const addChat = async() => {
         count: Math.floor(Math.random() * (100000 - 0)) + 0,
         chatOwner: user?.displayName,
         sortslot: serverTimestamp(),
-        banlist: []
+        banlist: [],
+        password: passinput
     })
     setinpvalue("")
     }
@@ -93,12 +96,37 @@ const unbanperson = (el:any) => {
     setchatforban(obj)
     setbaninput("")
 }
+const butpaspress = () => {
+    if(inpvalue != "" || passwbutpress){
+    setpasswbutpress(!passwbutpress)
+    setpassinput("")
+    }
+    else{
+        setplaceholder("Сначала введите имя чата!")
+        setpassinput("") 
+        setTimeout(()=> {
+            setplaceholder("Введите имя нового чата")
+        },3000)
+    }
+}
+const setchatpassword = () => {
+    setpassinput("")
+    addChat()
+    setpasswbutpress(!passwbutpress)
+}
     return (
         <div className="containlist">
             
             <div className="chatlistwindow">
                 <div className="labelchat">
                     <input className="inputaddchat" placeholder={placeholder} value={inpvalue} onChange={(e) => {setinpvalue(e.target.value)}} onKeyDown={(e) => {if(e.key == "Enter") addChat()}}/>
+                    <div className="passwordblock">
+                        <div className="passwordname">Чат с паролем</div>
+                        <label className="allitemspass">
+                            <input type="checkbox" checked={passwbutpress} className="passinput"/>
+                            <div className="checkmark" onClick={butpaspress}></div>
+                        </label>
+                    </div>
                     <button className="buttaddchat" onClick={addChat}></button>
                 </div>
                 {chats.length != 0 ? (
@@ -110,6 +138,7 @@ const unbanperson = (el:any) => {
                         {value.name}
                         </Link>
                         <div className="chatowner">Владелец чата: {value.chatOwner}</div>
+                        {value.password !== "" ? <div className="lock"></div> : <></>}
                         
                     </div>
                     <div className="tools">
@@ -129,6 +158,7 @@ const unbanperson = (el:any) => {
                 <div className="banperson" key={index}>{name}<div className="unban" onClick={() => {unbanperson(name)}}></div></div>
                 )})}
                 </div><input className="baninput" placeholder="Введите никнейм человека которого нужно забанить" autoFocus onKeyDown={(e) => {if(e.key == "Enter"){banpush()}}} onChange={(e) => {setbaninput(e.target.value)}}/></div> : <></>}
+            {passwbutpress ? <div><input className="passwordinput" placeholder="Введите пароль для чата" onChange={(e) => {setpassinput(e.target.value)}} onKeyDown={(e) => {if(e.key == "Enter"){setchatpassword()}}} value={passinput} autoFocus/></div> : <></>}
             
         </div>
     )
