@@ -3001,4 +3001,4 @@ This typically indicates that your device does not have a healthy Internet conne
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */Un(eD,tD,"app");const nD={apiKey:"AIzaSyCcOP2lZRb3zONaaxpiK7guyUODil-gtu4",authDomain:"chat-react-13f25.firebaseapp.com",projectId:"chat-react-13f25",storageBucket:"chat-react-13f25.appspot.com",messagingSenderId:"1027408448118",appId:"1:1027408448118:web:038ce75ed1cbc7f0a3ad57",measurementId:"G-C0QSHJ5MWS"},Cw=Cv(nD),Pi=PC(Cw),rD=new Yt,Jr=Ax(Cw);wc.createRoot(document.getElementById("root")).render(C.jsx(ry.StrictMode,{children:C.jsx(Zx,{})}));
+ */Un(eD,tD,"app");const nD={apiKey:"AIzaSyD5xI0-iQHsyGmZTBS-_fPuRWNNKTLi0eE",authDomain:"fsdfsd-6fd2e.firebaseapp.com",projectId:"fsdfsd-6fd2e",storageBucket:"fsdfsd-6fd2e.appspot.com",messagingSenderId:"921994643060",appId:"1:921994643060:web:428e18dc5c24b92630f321",measurementId:"G-GH34GCYZB3"},Cw=Cv(nD),Pi=PC(Cw),rD=new Yt,Jr=Ax(Cw);wc.createRoot(document.getElementById("root")).render(C.jsx(ry.StrictMode,{children:C.jsx(Zx,{})}));
